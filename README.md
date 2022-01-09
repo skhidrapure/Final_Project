@@ -17,8 +17,20 @@ These are the branches where all our works are going to stored & made accessible
 
 
 ## Database Storage
-Mongo is the database we intend to use, and we will integrate Flask to display the data.
-### Schema
+We will use PostgreSQL as our database to store clean and dependent datasets. We will use Tableau and integrate Flask to display the data.
+
+#### Datasets
+We acquired data from multiple sources, including data acquired from polygon.io using API, an existing dataset from Kaggle, and SP500 data package in python from datahub.io, etc. All related code has been updated in GitHub. Datasets include:
+
+- SP500 by sector
+- SP500 health sector stocks 
+- COVID vaccine production companies stocks
+- COVID related datasets
+
+#### Data cleaning
+Data cleaning was performed to include ticker, open, close, highest, and lowest price daily from the start of the stock meltdown in 2020 (03-12-2020) to end of 2021 (12-31-2021) for each SP500 sector and each stocks in the healthcare sector.
+
+#### Schema
 
 ## Provisional machine learning model: (Leon + Jin)
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
