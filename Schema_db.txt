@@ -26,9 +26,9 @@ SP500Data
 Index varchar pk fk - SP500List.Index
 Date date
 Open decimal
+Hight decimal
+Low decimal
 Close decimal
-X decimal
-XX decimal
 
 COVIDStocks
 -
