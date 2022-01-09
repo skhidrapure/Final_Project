@@ -15,3 +15,31 @@ Close decimal
 Trad_Vol decimal
 Weighted_Vol decimal
 Num_Trans int
+
+SP500List
+-
+Index varchar pk
+Sector varchar
+
+SP500Data
+-
+Index varchar pk fk - SP500List.Index
+Date date
+Open decimal
+Close decimal
+X decimal
+XX decimal
+
+COVIDStocks
+-
+Ticker varchar pk 
+Company varchar
+Sector varchar
+
+COVIDData
+-
+Ticker varchar pk fk - COVIDStocks.Ticker
+Date date
+Open decimal
+Close decimal
+Trad_Vol decimal
