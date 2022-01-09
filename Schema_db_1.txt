@@ -1,0 +1,17 @@
+HealthList
+-
+Ticker varchar pk
+Company varchar
+Sector varchar
+
+HealthData
+-
+Ticker varchar pk fk - HealthList.Ticker
+Date date
+Open decimal
+High decimal
+Low decimal
+Close decimal
+Trad_Vol decimal
+Weighted_Vol decimal
+Num_Trans int
