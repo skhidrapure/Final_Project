@@ -31,6 +31,7 @@ We acquired data from multiple sources, including data acquired from polygon.io 
 Data cleaning was performed to include ticker, open, close, highest, and lowest price daily from the start of the stock meltdown in 2020 (03-12-2020) to end of 2021 (12-31-2021) for each SP500 sector and each stocks in the healthcare sector.
 
 #### Schema
+![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/Schema_db.png)
 
 ## Provisional machine learning model: (Leon + Jin)
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
