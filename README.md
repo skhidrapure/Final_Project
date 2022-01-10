@@ -14,9 +14,16 @@ Our Git Repository is called the Final_Project which has 4 branches & a README.
 
 
 These are the branches where all our works are going to stored & made accessible to rest of the team members. The README is the one which will have all the written report of the entire analysis.
+### Overall (Soria)
+The project is about comparing stocks from companies who produce vaccines and the health care sector in general.
+We want to see if the stock from COVID 19 producers is doing better than the health care sector. In general, we look for how healthcare choices are doing good and in which area in the pandemic. We get data from Kaggle for COVID companies' vaccines from their stock data which has four columns of prices: Open, High, Low, Close. We focus on looking at Close price. We may create new columns from these basic four columns of data if needed.
+Especially for Machine Learning, when the database is clean, and brings more insight information, we will decide more columns to cluster, and learn further from the cluster
 
+### Technologies Used (Soria)
+We collect data from csv. The Database in charge  will try to look at it, learn columns, and first visualize data on jupyter lab, and Panda for programming. 
+Then use PostgreSQL for the database after learning and shaping clean data. The Machine learning will use unsupervised tool to run prediction for data. 
 
-## Database Storage
+## Database Storage (Shijie + Lexy)
 We will use PostgreSQL as our database to store clean and dependent datasets. We will use Tableau and integrate Flask to display the data.
 
 #### Datasets
@@ -47,4 +54,4 @@ We can perform ML on specific companies, or Nasdaq Healthcare index, or whicheve
 
 ## Communication Protocol
 
-The means fo communication for our analysis & sharing information, update is presesntly through slack. In future in we plan to extend this with other means of communication via Zoom, etc.
+The means of communication for our analysis & sharing information, update is presesntly through slack. In future in we plan to extend this with other means of communication via Zoom, etc.
