@@ -1,5 +1,5 @@
 
-# Analysing effects of the Pandemic on Stock Market
+# Analyzing effects of the Pandemic on Stock Market
 
 ## Overall (Soria)
 The project is about comparing stocks from companies who produce vaccines and the health care sector in general.
