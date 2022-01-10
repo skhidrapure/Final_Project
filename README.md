@@ -17,4 +17,5 @@ By diving into a specific timeframe, for instance  2000 - 2019 (pre-pandemic). W
 
 We can perform ML on specific companies, or Nasdaq Healthcare index, or whichever makes lives easier, simpler, and happier. (ha!)
 
+J: commit attempt 1
 
