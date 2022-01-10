@@ -1,12 +1,13 @@
-# Final_Project
-## Stock_Analysis
-## Git Repository
+
+# Analysing effects of the Pandemic on Stock Market
 
 ## Overall (Soria)
 The project is about comparing stocks from companies who produce vaccines and the health care sector in general.
 We want to see if the stock from COVID 19 producers is doing better than the health care sector. In general, we look for how healthcare choices are doing good and in which area in the pandemic. We get data from Kaggle for COVID companies' vaccines from their stock data which has four columns of prices: Open, High, Low, Close. We focus on looking at Close price. We may create new columns from these basic four columns of data if needed.
 Especially for Machine Learning, when the database is clean, and brings more insight information, we will decide more columns to cluster, and learn further from the cluster
 
+
+## Git Repository(Shweta)
 In Git, the repository is like a data structure used by VCS to store metadata for a set of files and directories. It contains the collection of the files as well as the history of changes made to those files. Repository in Git is considered as your project folder. A repository has all the project-related data.
  
 Our Git Repository is called the Final_Project which has 4 branches & a README. 
@@ -52,6 +53,6 @@ By diving into a specific timeframe, for instance  2000 - 2019 (pre-pandemic). W
 
 We can perform ML on specific companies, or Nasdaq Healthcare index, or whichever makes lives easier, simpler, and happier. (ha!)
 
-## Communication Protocol
+## Communication Protocol (Shweta)
 
-The means of communication for our analysis & sharing information, update is presesntly through slack. In future in we plan to extend this with other means of communication via Zoom, etc.
+The means of communication for our analysis & sharing information, sharing update is presesntly through slack & goggle meet. In future in we plan to extend this with other means of communication via Zoom, etc.
