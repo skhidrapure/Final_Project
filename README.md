@@ -47,4 +47,4 @@ We can perform ML on specific companies, or Nasdaq Healthcare index, or whicheve
 
 ## Communication Protocol
 
-The means fo communication for our analysis & sharing information, update is presesntly through slack. In future in we plan to extend this with other means of communication via Zoom, etc.
+The means of communication for our analysis & sharing information, update is presesntly through slack. In future in we plan to extend this with other means of communication via Zoom, etc.
