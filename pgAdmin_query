@@ -1,0 +1,206 @@
+-- Dropping duplicated and empty tables
+DROP table s5cond;
+DROP table s5cons;
+DROP table s5enrs;
+DROP table s5finl;
+DROP table s5hlth;
+DROP table s5indu;
+DROP table s5inft;
+DROP table s5matr;
+DROP table s5rlst;
+DROP table s5tels;
+DROP table s5util;
+DROP table test_table;
+DROP table spx_spx_health_sector_info
+
+-- checking the data
+SELECT * FROM spx_index
+SELECT * FROM s5inft_index
+SELECT * FROM spx_health_sector_info
+SELECT * FROM spx_health_sector_stocks
+SELECT * FROM spx_health_sector_stocks_all
+SELECT * FROM covid_companies_stocks
+
+-- figure out the difference between spx_health_sector_stocks_all and spx_health_sector_stocks
+
+select distinct(Ticker) 
+from spx_health_sector_stocks_all
+
+select distinct("Ticker") 
+from spx_health_sector_stocks
+
+-- spx_health_sector_stocks_all has 67 stocks, including the three covid stocks that are not in SP500
+-- spx_health_sector_stocks has 64 stocks, missing 3 covid stocks that are not in SP500
+
+
+-- changing the column type from timestamps to date
+
+SELECT "Date"
+FROM covid_companies_stocks
+LIMIT 100
+
+SELECT Date("Date")
+FROM covid_companies_stocks
+LIMIT 100
+
+-- creat test_table
+
+CREATE TABLE test_table AS
+SELECT * FROM covid_companies_stocks
+
+ALTER TABLE test_table 
+ALTER COLUMN "Date" TYPE DATE
+
+-- changing the column type from timestamps to date
+
+ALTER TABLE spx_health_sector_stocks_all
+ALTER COLUMN "Date" TYPE DATE
+
+ALTER TABLE spx_health_sector_stocks
+ALTER COLUMN "Date" TYPE DATE
+
+ALTER TABLE covid_companies_stocks 
+ALTER COLUMN "Date" TYPE DATE
+
+---------- import covid data
+
+CREATE TABLE test_table (
+  date DATE,
+  country VARCHAR (200),
+  cumulative_total_cases NUMERIC,
+  daily_new_cases NUMERIC,
+  active_cases NUMERIC,
+  cumulative_total_deaths NUMERIC,
+  daily_new_deaths NUMERIC,
+  PRIMARY KEY (date)					
+)
+
+-- csv imported
+
+SELECT * FROM test_table
+-- change the datatype
+ALTER TABLE test_table 
+ALTER COLUMN cumulative_total_cases TYPE INT, 
+ALTER COLUMN daily_new_cases TYPE INT,
+ALTER COLUMN active_cases TYPE INT,
+ALTER COLUMN cumulative_total_deaths TYPE INT,
+ALTER COLUMN daily_new_deaths TYPE INT;
+-- change table name
+ALTER TABLE test_table
+RENAME TO covid_data_US;
+
+
+---------- create datasets containing stocks and covid data
+
+-- change keyword like column name to something else
+ALTER TABLE covid_companies_stocks 
+RENAME COLUMN "Date" TO pandemic_date;
+
+SELECT * FROM covid_companies_stocks 
+
+SELECT s.pandemic_date, 
+  co.daily_new_cases, 
+  co.daily_new_deaths,
+  "Ticker" as stock_ticker,
+  "Open" as open_price,
+  "High" as highest,
+  "Low" as lowest,
+  "Close" as closing,
+  "Trading_Volume",
+  "Volume_Weighted_Average_Price",
+  "Number_of_Transactions"
+INTO covid_stocks_with_covid_data
+FROM covid_data_us as co
+LEFT JOIN covid_companies_stocks as s
+ON co.date=s.pandemic_date
+
+-- Check results
+SELECT * FROM covid_stocks_with_covid_data
+WHERE stock_ticker='MRNA'
+
+SELECT DISTINCT(stock_ticker) FROM covid_stocks_with_covid_data
+
+--------- join SP500 sector data into one dataset
+
+ALTER TABLE s5hlth_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5cons_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5cond_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5enrs_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5finl_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5indu_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5inft_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5matr_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5rlst_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5tels_index 
+RENAME COLUMN "Close" TO closing;
+ALTER TABLE s5util_index 
+RENAME COLUMN "Close" TO closing;
+
+SELECT  s.date, s.Close AS spx_close, 
+  hlth.closing AS hlth_close,
+  cons.closing AS cons_close,
+  cond.closing AS cond_close,
+  enrs.closing AS enrs_close,
+  finl.closing AS finl_close,
+  indu.closing AS indu_close,
+  inft.closing AS inft_close,
+  matr.closing AS matr_close,
+  rlst.closing AS rlst_close,
+  tels.closing AS tels_close,
+  util.closing AS util_close,
+  co.daily_new_cases, 
+  co.daily_new_deaths
+FROM s5hlth_index AS hlth
+LEFT JOIN spx_index AS s
+ON (s.date = hlth.date)
+LEFT JOIN covid_data_us AS co
+ON (s.date = co.date)
+LEFT JOIN s5cons_index AS cons
+ON (s.date = cons.date)
+LEFT JOIN s5cond_index AS cond
+ON (s.date = cond.date)
+LEFT JOIN s5enrs_index AS enrs
+ON (s.date = enrs.date)
+LEFT JOIN s5finl_index AS finl
+ON (s.date = finl.date)
+LEFT JOIN s5indu_index AS indu
+ON (s.date = indu.date)
+LEFT JOIN s5inft_index AS inft
+ON (s.date = inft.date)
+LEFT JOIN s5matr_index AS matr
+ON (s.date = matr.date)
+LEFT JOIN s5rlst_index AS rlst
+ON (s.date = rlst.date)
+LEFT JOIN s5tels_index AS tels
+ON (s.date = tels.date)
+LEFT JOIN s5util_index AS util
+ON (s.date = util.date)
+
+SELECT * FROM SPX_sector_covid
+
+
+-- remove duplicate rows
+CREATE TABLE SPX_sector_covid_data (LIKE SPX_sector_covid);
+
+INSERT INTO SPX_sector_covid_data
+SELECT DISTINCT date, spx_close, hlth_close,
+  cons_close, cond_close, enrs_close,
+  finl_close, indu_close, inft_close,
+  matr_close, rlst_close, tels_close,
+  util_close, daily_new_cases, daily_new_deaths
+FROM SPX_sector_covid
+ORDER BY date
+
+SELECT * FROM SPX_sector_covid_data
+
+DROP TABLE SPX_sector_covid
+     
