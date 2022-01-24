@@ -53,6 +53,9 @@ Data cleaning was performed to include ticker, open, close, highest, and lowest 
 #### Schema
 ![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/Schema_db.png)
 
+#### Creating an AWS Relational Database
+AWS offers a wide variety of storage options on its platform, including both structured and unstructured databases. We'll be setting up a Postgres database using AWS's relational database service (RDS).
+
 ## Provisional machine learning model: 
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
 ### Supervised ML - Forecasting 
