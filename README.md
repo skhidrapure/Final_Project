@@ -60,6 +60,12 @@ We uploaded source data to postgreSQL database. To create ideal datasets for fur
  - The SQL query was uploaded to GitHub; 
  - Schema for both datasets were created, see following.
 
+
+#### Interactive Tableau Dashboard
+The datasets will be displayed in interactive dashboards on Tableau. For example, please see link below to visualize health sector stock performance during the pandemic:
+
+https://public.tableau.com/shared/MQFRR8WRJ?:display_count=n&:origin=viz_share_link
+
 #### Schema 
 
 
