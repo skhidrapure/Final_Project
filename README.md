@@ -8,8 +8,6 @@ Especially for Machine Learning, when the database is clean, and brings more ins
 
 [Google Slide](https://docs.google.com/presentation/d/1oSJ2avPSx7_tLzqk5HBagGbbpPnChRv1a3u5FSAFNd8/edit#slide=id.g10f44ae38ac_2_62)
 
-Dashboard:
-
 ## Git Repository
 In Git, the repository is like a data structure used by VCS to store metadata for a set of files and directories. It contains the collection of the files as well as the history of changes made to those files. Repository in Git is considered as your project folder. A repository has all the project-related data.
  
