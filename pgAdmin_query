@@ -71,23 +71,44 @@ CREATE TABLE test_table (
   daily_new_cases NUMERIC,
   active_cases NUMERIC,
   cumulative_total_deaths NUMERIC,
+  daily_new_deaths NUMERIC
+  --PRIMARY KEY (date)					
+)
+
+
+-- csv imported
+
+-- creat covid_data_us
+
+CREATE TABLE covid_data_us (
+  date DATE,
+  country VARCHAR (200),
+  cumulative_total_cases NUMERIC,
+  daily_new_cases NUMERIC,
+  active_cases NUMERIC,
+  cumulative_total_deaths NUMERIC,
   daily_new_deaths NUMERIC,
   PRIMARY KEY (date)					
 )
 
--- csv imported
-
+INSERT INTO covid_data_us
 SELECT * FROM test_table
--- change the datatype
-ALTER TABLE test_table 
+WHERE country = 'USA'
+
+SELECT DISTINCT (date) FROM covid_data_us
+ORDER BY date
+
+-- change the datatype ONLY IF NEEDED
+ALTER TABLE covid_data_us 
 ALTER COLUMN cumulative_total_cases TYPE INT, 
 ALTER COLUMN daily_new_cases TYPE INT,
 ALTER COLUMN active_cases TYPE INT,
 ALTER COLUMN cumulative_total_deaths TYPE INT,
 ALTER COLUMN daily_new_deaths TYPE INT;
+
 -- change table name
 ALTER TABLE test_table
-RENAME TO covid_data_US;
+RENAME TO covid_data;
 
 
 ---------- create datasets containing stocks and covid data
@@ -145,7 +166,8 @@ RENAME COLUMN "Close" TO closing;
 ALTER TABLE s5util_index 
 RENAME COLUMN "Close" TO closing;
 
-SELECT  s.date, s.Close AS spx_close, 
+
+SELECT s.date, s.Close AS spx_close, 
   hlth.closing AS hlth_close,
   cons.closing AS cons_close,
   cond.closing AS cond_close,
@@ -159,6 +181,7 @@ SELECT  s.date, s.Close AS spx_close,
   util.closing AS util_close,
   co.daily_new_cases, 
   co.daily_new_deaths
+INTO SPX_sector_covid
 FROM s5hlth_index AS hlth
 LEFT JOIN spx_index AS s
 ON (s.date = hlth.date)
@@ -186,21 +209,39 @@ LEFT JOIN s5util_index AS util
 ON (s.date = util.date)
 
 SELECT * FROM SPX_sector_covid
-
+WHERE hlth_close='1534.35'
 
 -- remove duplicate rows
-CREATE TABLE SPX_sector_covid_data (LIKE SPX_sector_covid);
 
-INSERT INTO SPX_sector_covid_data
 SELECT DISTINCT date, spx_close, hlth_close,
   cons_close, cond_close, enrs_close,
   finl_close, indu_close, inft_close,
   matr_close, rlst_close, tels_close,
   util_close, daily_new_cases, daily_new_deaths
+INTO SPX_sector_covid_data
 FROM SPX_sector_covid
 ORDER BY date
 
 SELECT * FROM SPX_sector_covid_data
+WHERE hlth_close ='1534.35'
+
+SELECT * FROM s5hlth_index
 
 DROP TABLE SPX_sector_covid
      
+-------- Double check data
+
+SELECT * FROM covid_stocks_with_covid_data
+
+SELECT DISTINCT(pandemic_date) FROM covid_stocks_with_covid_data
+ORDER BY pandemic_date
+
+SELECT DISTINCT(date) FROM covid_data_us
+ORDER BY date
+
+SELECT DISTINCT(pandemic_date) FROM covid_companies_stocks
+ORDER BY pandemic_date
+
+-- Recreate table covid_data_us
+
+
