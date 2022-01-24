@@ -1,0 +1,66 @@
+spx_health_sector_info
+-
+Ticker varchar pk
+Company varchar
+Sector varchar
+
+spx_health_sector_stocks
+-
+Ticker varchar pk fk - spx_health_sector_info.Ticker
+Date date
+Open decimal
+High decimal
+Low decimal
+Close decimal
+Trad_Vol decimal
+Weighted_Vol decimal
+Num_Trans int
+
+spx_health_sector_stocks_all
+-
+Ticker varchar pk fk - spx_health_sector_info.Ticker
+Date date
+Open decimal
+High decimal
+Low decimal
+Close decimal
+Trad_Vol decimal
+Weighted_Vol decimal
+Num_Trans int
+
+covid_companies_stocks
+-
+Ticker varchar pk 
+pandemic_date date FK >- covid_stocks_with_covid_data.pandemic_date
+Open decimal FK >- covid_stocks_with_covid_data.open_price
+High decimal FK >- covid_stocks_with_covid_data.highest
+Low decimal FK >- covid_stocks_with_covid_data.lowest
+Close decimal FK >- covid_stocks_with_covid_data.closing
+Trading_Volume decimal FK >- covid_stocks_with_covid_data.Trading_Volume
+Volume_Weight_Avergae decimal FK >- covid_stocks_with_covid_data.Volume_Weighted_Average_Price
+Number_of_Transactions decimal FK >- covid_stocks_with_covid_data.Number_of_Transactions
+
+covid_data_us
+-
+date date pk FK >- covid_stocks_with_covid_data.pandemic_date
+country varchar 
+cumulative_total_case int
+daily_new_cases int FK >- covid_stocks_with_covid_data.daily_new_cases
+active_cases int
+cumulative_total_deaths int
+daily_new_deaths int FK >- covid_stocks_with_covid_data.daily_new_deaths
+
+covid_stocks_with_covid_data
+-
+pandemic_date date pk
+daily_new_cases int
+daily_new_deaths int
+stock_ticker varchar FK >- spx_health_sector_stocks_all.Ticker
+open_price decimal
+highest decimal
+lowest decimal
+closing decimal
+Trading_Volume decimal
+Volume_Weighted_Average_Price decimal
+Number_of_Transactions decimal
+
