@@ -40,18 +40,37 @@ The companies producing covid vaccines were further derived from the dataframe i
 
 All related code has been updated in GitHub. 
 
-Datasets include:
+Data sources include:
 
 - SP500 by sector
 - SP500 health sector stocks all 
 - COVID companies stocks
 - [COVID datasets](https://www.kaggle.com/josephassaker/covid19-global-dataset)
 
-#### Data cleaning
-Data cleaning was performed to include ticker, open, close, highest, and lowest price daily from the start of the stock meltdown in 2020 (03-12-2020) to end of 2021 (12-31-2021) for each SP500 sector and each stocks in the healthcare sector.
+#### Data Cleaning
+Data cleaning was performed to include ticker, daily open, close, highest, lowest price, etc, from the start of the stock meltdown in 2020 (03-12-2020) to end of 2021 (12-31-2021) for each SP500 sector and each stocks in the healthcare sector. Headers were added (if needed) and date was formated.
 
-#### Schema
-![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/Schema_db.png)
+#### Creating Dataset
+
+We uploaded source data to postgreSQL database. To create ideal datasets for further analysis:
+
+ - We subsetted the COVID data into US only and the date was set as the primary key;
+ - The COVID companies stocks was joined with COVID data into one dataset: **COVID stock covid data**;
+ - The closing price of all the 12 SP500 sector index data were joined together with COVID data into one dataset:  **SPX sector covid data**;
+ - The SQL query was uploaded to GitHub; 
+ - Schema for both datasets were created, see following.
+
+#### Schema 
+
+
+##### **COVID stock covid data**
+![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/covid_stocks_covid_data_ERD.png?raw=true)
+
+##### **SPX sector covid data**
+###### _Due to the free version of databasediagrams, maximun of 10 diagrams were allowed, thus, some of the index diagrams were not shown_
+
+![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/sector_covid_ERD.png?raw=true)
+
 
 ## Provisional machine learning model: 
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
