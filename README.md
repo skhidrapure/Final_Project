@@ -76,10 +76,16 @@ https://public.tableau.com/shared/MQFRR8WRJ?:display_count=n&:origin=viz_share_l
 ![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/sector_covid_ERD.png?raw=true)
 
 
+#### Creating an AWS Relational Database
+AWS offers a wide variety of storage options on its platform, including both structured and unstructured databases. We'll be setting up a Postgres database using AWS's relational database service (RDS). The Postgres database we just created is hosted on the cloud, so it can be accessed by fellow team members with credentials using whatever platform they prefer.
+
 ## Provisional machine learning model: 
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
 ### Supervised ML - Forecasting 
 Based on the historical record of closed prices for target companies. We find the closed price is continous variable. It's better to use regression to predict the trends. The general idea is we set "Year" in the x-axis and "Closed Price" in the y-axis. What we expect to see is each stock should have a pattern and the pattern will continue. If the pattern is volatile, regression may not be a good terminology to predict.
+
+We use linear regression model to predict overall market performance and target health sector performance. They looks similar. Then we focus on covid companies and compare them with the market. As we said before, if some good or bad news come out, it might affect stocks to one side extremely. What we see in the six covid companies, they performed similar to the market. But started from the last half year, the volatility kick in. It limited the regression model to well predict.
+
 ### Unsupervised ML - Clusterings
 Uncertain if we’ll have enough features/columns for the algorithm to run. 
 We know the model can't have strings, so we have to transform strings into number. We decide to name sector a number, and calculate the annual return for each stock. The goal here is we use unsupervised ML to cluster high, medium and low return based on the benchmark (SPY). Then we will check how many stocks in the same cluster belong to the same sector.
@@ -87,6 +93,8 @@ We know the model can't have strings, so we have to transform strings into numbe
 By diving into a specific timeframe, for instance  2000 - 2019 (pre-pandemic). We can train models with supervised ML, graph out the predicted data points with dashlines, and analyze its performance vs model predictions. 
 
 We can perform ML on specific companies, or Nasdaq Healthcare index, or whichever makes lives easier, simpler, and happier. (ha!)
+
+When we process the data, we found the date is from 2020-03-11 to 2021-12-31. So we should reorganize the date from 2020-03-11 to 2021-03-11 to calculate annual return. Then we focus on the stocks from health sector and see if covid companies are outperforme others. We select three features here. Annual return is the key factor to check the performance. Number of transactions and volumes support price movements if the stocks are popular during these periods. And we also test how many clusters we need by using Elbow Curve. But the results seem most companies perform closely to each other. There might be one reason that covid companies were volatile in the last half year. It might reduced their leading performance back to average level.
 
 ### Communication Protocol
 
