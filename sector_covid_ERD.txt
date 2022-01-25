@@ -1,0 +1,93 @@
+covid_data_us
+-
+date date pk
+country varchar 
+cumulative_total_case int
+daily_new_cases int
+active_cases int
+cumulative_total_deaths int
+daily_new_deaths int
+
+spx_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.spx_close
+
+s5cond_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.cond_close
+
+s5cons_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.cons_close
+
+
+s5enrs_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.enrs_close
+
+
+s5finl_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.finl_close
+
+s5hlth_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.hlth_close
+
+s5indu_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.indu_close
+
+s5inft_index
+-
+Date date
+Open decimal
+Hight decimal
+Low decimal
+Close decimal FK >- SPX_sector_covid_data.inft_close
+
+SPX_sector_covid_data
+-
+date pk FK >- covid_data_us.date
+spx_close
+hlth_close
+cons_close
+cond_close
+enrs_close
+finl_close
+indu_close
+inft_close
+matr_close
+rlst_close
+tels_close
+util_close
+daily_new_cases FK >- covid_data_us.active_cases
+daily_new_deaths FK >- covid_data_us.daily_new_deaths

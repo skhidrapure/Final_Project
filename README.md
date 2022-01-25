@@ -8,8 +8,6 @@ Especially for Machine Learning, when the database is clean, and brings more ins
 
 [Google Slide](https://docs.google.com/presentation/d/1oSJ2avPSx7_tLzqk5HBagGbbpPnChRv1a3u5FSAFNd8/edit#slide=id.g10f44ae38ac_2_62)
 
-Dashboard:
-
 ## Git Repository
 In Git, the repository is like a data structure used by VCS to store metadata for a set of files and directories. It contains the collection of the files as well as the history of changes made to those files. Repository in Git is considered as your project folder. A repository has all the project-related data.
  
@@ -34,24 +32,49 @@ We use PostgreSQL as our database to store clean and dependent datasets. We will
 We acquired data from multiple sources, including data acquired from polygon.io using API, existing datasets from Kaggle, and SP500 data package in python from datahub.io, etc. 
 
 To get data of individual stocks data, we first aquired the list of stocks in the SP500 through [datahub.io](https://datahub.io/core/s-and-p-500-companies#resource-s-and-p-500-companies_zip) and subseted the health sector.
-Using for-loop to iterate through the health sector list, we created polygon.io API links ([example] (https://api.polygon.io/v2/aggs/ticker/EDIT/range/1/day/2020-03-12/2021-12-31?adjusted=true&sort=asc&limit=730&apiKey=3KpZPDXRUCksP8Xb5AJKkXI02s8x5VXx)) for each stock in the sector, date ranging from 03-12-2020 to 12-31-2021, extracted the results and created dataframe **SP500 health sector stocks all**.
+Using for-loop to iterate through the health sector list, we created polygon.io API links [example] (https://api.polygon.io/v2/aggs/ticker/EDIT/range/1/day/2020-03-12/2021-12-31?adjusted=true&sort=asc&limit=730&apiKey=3KpZPDXRUCksP8Xb5AJKkXI02s8x5VXx) for each stock in the sector, date ranging from 03-12-2020 to 12-31-2021, extracted the results and created dataframe **SP500 health sector stocks all**.
 
 The companies producing covid vaccines were further derived from the dataframe into a separate dataframe **COVID companies stocks**.
 
 All related code has been updated in GitHub. 
 
-Datasets include:
+Data sources include:
 
 - SP500 by sector
 - SP500 health sector stocks all 
 - COVID companies stocks
 - [COVID datasets](https://www.kaggle.com/josephassaker/covid19-global-dataset)
 
-#### Data cleaning
-Data cleaning was performed to include ticker, open, close, highest, and lowest price daily from the start of the stock meltdown in 2020 (03-12-2020) to end of 2021 (12-31-2021) for each SP500 sector and each stocks in the healthcare sector.
+#### Data Cleaning
+Data cleaning was performed to include ticker, daily open, close, highest, lowest price, etc, from the start of the stock meltdown in 2020 (03-12-2020) to end of 2021 (12-31-2021) for each SP500 sector and each stocks in the healthcare sector. Headers were added (if needed) and date was formated.
 
-#### Schema
-![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/Schema_db.png)
+#### Creating Dataset
+
+We uploaded source data to postgreSQL database. To create ideal datasets for further analysis:
+
+ - We subsetted the COVID data into US only and the date was set as the primary key;
+ - The COVID companies stocks was joined with COVID data into one dataset: **COVID stock covid data**;
+ - The closing price of all the 12 SP500 sector index data were joined together with COVID data into one dataset:  **SPX sector covid data**;
+ - The SQL query was uploaded to GitHub; 
+ - Schema for both datasets were created, see following.
+
+
+#### Interactive Tableau Dashboard
+The datasets will be displayed in interactive dashboards on Tableau. For example, please see link below to visualize health sector stock performance during the pandemic:
+
+https://public.tableau.com/shared/MQFRR8WRJ?:display_count=n&:origin=viz_share_link
+
+#### Schema 
+
+
+##### **COVID stock covid data**
+![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/covid_stocks_covid_data_ERD.png?raw=true)
+
+##### **SPX sector covid data**
+###### _Due to the free version of databasediagrams, maximun of 10 diagrams were allowed, thus, some of the index diagrams were not shown_
+
+![Schema_db.png](https://github.com/skhidrapure/Final_Project/blob/db-master/sector_covid_ERD.png?raw=true)
+
 
 #### Creating an AWS Relational Database
 AWS offers a wide variety of storage options on its platform, including both structured and unstructured databases. We'll be setting up a Postgres database using AWS's relational database service (RDS). The Postgres database we just created is hosted on the cloud, so it can be accessed by fellow team members with credentials using whatever platform they prefer.
