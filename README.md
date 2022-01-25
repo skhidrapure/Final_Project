@@ -63,6 +63,7 @@ We uploaded source data to postgreSQL database. To create ideal datasets for fur
 The datasets will be displayed in interactive dashboards on Tableau. For example, please see link below to visualize health sector stock performance during the pandemic:
 
 https://public.tableau.com/shared/MQFRR8WRJ?:display_count=n&:origin=viz_share_link
+Data can be filtered by company. Specific columns and rows can also be highlighted.
 
 #### Schema 
 
