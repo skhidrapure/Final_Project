@@ -32,7 +32,7 @@ We use PostgreSQL as our database to store clean and dependent datasets. We will
 We acquired data from multiple sources, including data acquired from polygon.io using API, existing datasets from Kaggle, and SP500 data package in python from datahub.io, etc. 
 
 To get data of individual stocks data, we first aquired the list of stocks in the SP500 through [datahub.io](https://datahub.io/core/s-and-p-500-companies#resource-s-and-p-500-companies_zip) and subseted the health sector.
-Using for-loop to iterate through the health sector list, we created polygon.io API links ([example] (https://api.polygon.io/v2/aggs/ticker/EDIT/range/1/day/2020-03-12/2021-12-31?adjusted=true&sort=asc&limit=730&apiKey=3KpZPDXRUCksP8Xb5AJKkXI02s8x5VXx)) for each stock in the sector, date ranging from 03-12-2020 to 12-31-2021, extracted the results and created dataframe **SP500 health sector stocks all**.
+Using for-loop to iterate through the health sector list, we created polygon.io API links [example] (https://api.polygon.io/v2/aggs/ticker/EDIT/range/1/day/2020-03-12/2021-12-31?adjusted=true&sort=asc&limit=730&apiKey=3KpZPDXRUCksP8Xb5AJKkXI02s8x5VXx) for each stock in the sector, date ranging from 03-12-2020 to 12-31-2021, extracted the results and created dataframe **SP500 health sector stocks all**.
 
 The companies producing covid vaccines were further derived from the dataframe into a separate dataframe **COVID companies stocks**.
 
