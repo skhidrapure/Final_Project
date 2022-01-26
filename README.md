@@ -82,12 +82,19 @@ AWS offers a wide variety of storage options on its platform, including both str
 
 ## Provisional machine learning model: 
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
-### Supervised ML - Forecasting 
-Based on the historical record of closed prices for target companies. We find the closed price is continous variable. It's better to use regression to predict the trends. The general idea is we set "Year" in the x-axis and "Closed Price" in the y-axis. What we expect to see is each stock should have a pattern and the pattern will continue. If the pattern is volatile, regression may not be a good terminology to predict.
+### Supervised ML - Linear Regression Forecasting 
 
-We use linear regression model to predict overall market performance and target health sector performance. They looks similar. Then we focus on covid companies and compare them with the market. As we said before, if some good or bad news come out, it might affect stocks to one side extremely. What we see in the six covid companies, they performed similar to the market. But started from the last half year, the volatility kick in. It limited the regression model to well predict.
+Our model will be based on the historical record of closed prices for vaccination companies. We find the closed prices are continous variables thus it is better to utilize linear regression to predict trend lines. The general idea is to set "Time" in the x-axis and "Closeing Price" in the y-axis. What we expect to see is each stock should have a pattern and the pattern will be continuous. If the pattern is volatile, regression may not be a good terminology to predict.
 
-### Unsupervised ML - Clusterings
+Overview of vaccination stocks:
+![](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/v_companies.png)
+
+With linear regression model to predict overall market performance and target health sector performance, they looks similar. Then we focus on covid companies and compare them with the market. As we said before, if some good or bad news come out, it might affect stocks to one side extremely. What we see in the six covid companies, they performed similar to the market. But started from the last half year, the volatility kick in. It limited the regression model to well predict.
+
+Overview of SP500 index prediction.
+![](regression\ graph/SP500.png)
+
+### Unsupervised ML - K-Nearest Neighbors Algorithm Clusterings
 Uncertain if we’ll have enough features/columns for the algorithm to run. 
 We know the model can't have strings, so we have to transform strings into number. We decide to name sector a number, and calculate the annual return for each stock. The goal here is we use unsupervised ML to cluster high, medium and low return based on the benchmark (SPY). Then we will check how many stocks in the same cluster belong to the same sector.
 
@@ -97,6 +104,18 @@ We can perform ML on specific companies, or Nasdaq Healthcare index, or whicheve
 
 When we process the data, we found the date is from 2020-03-11 to 2021-12-31. So we should reorganize the date from 2020-03-11 to 2021-03-11 to calculate annual return. Then we focus on the stocks from health sector and see if covid companies are outperforme others. We select three features here. Annual return is the key factor to check the performance. Number of transactions and volumes support price movements if the stocks are popular during these periods. And we also test how many clusters we need by using Elbow Curve. But the results seem most companies perform closely to each other. There might be one reason that covid companies were volatile in the last half year. It might reduced their leading performance back to average level.
 
-### Communication Protocol
+Elbow Curve is utilized in order to identify the ideal number of clusters in the dataset. 
+
+
+Elbow Curve: [Click me to understand more about Elbow Method](https://en.wikipedia.org/wiki/Elbow_method_(clustering))
+
+![](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/elbow.png)
+
+
+Clustering in 3D view:
+![](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/3d.png)
+
+
+## Communication Protocol
 
 The means of communication for our analysis & sharing information, sharing update is presesntly through slack & goggle meet. In future in we plan to extend this with other means of communication via Zoom, etc.
