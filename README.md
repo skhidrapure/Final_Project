@@ -96,7 +96,7 @@ Overview of vaccination stocks:
 With linear regression model to predict overall market performance and target health sector performance, they looks similar. Then we focus on covid companies and compare them with the market. As we said before, if some good or bad news come out, it might affect stocks to one side extremely. What we see in the six covid companies, they performed similar to the market. But started from the last half year, the volatility kick in. It limited the regression model to well predict.
 
 Overview of SP500 index prediction.
-![](regression\ graph/SP500.png)
+![SP500.png](regression\ graph/SP500.png)
 
 ### Unsupervised ML - K-Nearest Neighbors Algorithm Clusterings
 Uncertain if we’ll have enough features/columns for the algorithm to run. 
@@ -113,11 +113,11 @@ Elbow Curve is utilized in order to identify the ideal number of clusters in the
 
 Elbow Curve: [Click me to understand more about Elbow Method](https://en.wikipedia.org/wiki/Elbow_method_(clustering))
 
-![](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/elbow.png)
+![elbow.png](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/elbow.png)
 
 
 Clustering in 3D view:
-![](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/3d.png)
+![3d.png](Prediction\ data\ \(SPY\ and\ Covid\ companies\)/3d.png)
 
 
 ## Communication Protocol
