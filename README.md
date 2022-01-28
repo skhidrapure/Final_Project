@@ -60,14 +60,8 @@ We uploaded source data to postgreSQL database. To create ideal datasets for fur
 
 
 #### Interactive Tableau Dashboard
-The datasets will be displayed in interactive dashboards on Tableau. Please see link below for health sector stock performance during the pandemic:
-
-[Stock Performance](https://public.tableau.com/shared/MQFRR8WRJ?:display_count=n&:origin=viz_share_link)
-Data can be filtered by company. Specific columns and rows can also be highlighted.
-
-[COVID Dashboard](https://public.tableau.com/app/profile/lexy5077/viz/Final_Project_16430117700110/CovidDashboard?publish=yes)
-
-[SPX Dashboard](https://public.tableau.com/app/profile/lexy5077/viz/Final_Project_16430117700110/SPXDashboard?publish=yes)
+The datasets will be displayed on interactive dashboards on Tableau. 
+[Tableau Storyboard](https://public.tableau.com/app/profile/lexy5077/viz/Final_Project_16430117700110/FinalProject?publish=yes)
 
 #### Schema 
 
