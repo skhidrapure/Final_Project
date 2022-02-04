@@ -1,7 +1,7 @@
 
 # Analyzing effects of the Pandemic on Stock Market
 
-## Overall
+## Overview
 The project is about comparing stocks from companies who produce vaccines and the health care sector in general.
 We want to see if the stock from COVID 19 producers is doing better than the health care sector. In general, we look for how healthcare choices are doing good and in which area in the pandemic. We get data from Kaggle for COVID companies' vaccines from their stock data which has four columns of prices: Open, High, Low, Close. We focus on looking at Close price. We may create new columns from these basic four columns of data if needed.
 Especially for Machine Learning, when the database is clean, and brings more insight information, we will decide more columns to cluster, and learn further from the cluster.
