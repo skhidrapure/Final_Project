@@ -114,6 +114,16 @@ Clustering in 3D view:
 ![3d.png](Prediction_Data/3d.png)
 
 
-## Communication Protocol
+### Recurrent Neural Network (RNN) in Predicting MRNA Stock Price
 
-The means of communication for our analysis & sharing information, sharing update is presesntly through slack & goggle meet. In future in we plan to extend this with other means of communication via Zoom, etc.
+In correlation analysis we notice the daily COVID cases are correlated with vaccine company stocks, like Moderna (MRNA), thus we are wondering whether we can use the closing price and covid data to predict future stock price of MRNA.
+
+To predict the continuous variable like stock price, we used Recurrent Neural Network (RNN). We separate the data into two parts - training and testing. We first used the 60 days closing price data to predict the closing of day 61 for the 10 months in 2020. And tested the model usinsg 2021 data and predicted the stock closing price from Mar 2021 - Dec 2021. The graph showed moderate success trend in predicting closing price.
+
+![RNN result](RNN_prediction_results/Drafts/RNN_MRNA_closing.png)
+
+Next, using the same Recurrent Neural Network (RNN), with not only closing price of the 60 days data, but also two more variables related to daily covid data (cases and deaths), we retrain the RNN model to predict the closing price of day 61. The model showed increasing success in predicting closing price.
+
+![RNN result](RNN_prediction_results/RNN_MRNA_covid.png)
+
+
