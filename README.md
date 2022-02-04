@@ -78,7 +78,7 @@ The datasets will be displayed on interactive dashboards on Tableau.
 #### Creating an AWS Relational Database
 AWS offers a wide variety of storage options on its platform, including both structured and unstructured databases. We'll be setting up a Postgres database using AWS's relational database service (RDS). The Postgres database we just created is hosted on the cloud, so it can be accessed by fellow team members with credentials using whatever platform they prefer.
 
-## Provisional machine learning model: 
+## Provisional machine learning models: 
 There are a couple options when it comes to machine learning. Depending on the available dataset we have, our project can, potentially, proceed in two different directions:
 ### Supervised ML - Linear Regression Forecasting 
 
@@ -126,4 +126,11 @@ Next, using the same Recurrent Neural Network (RNN), with not only closing price
 
 ![RNN result](RNN_prediction_results/RNN_MRNA_covid.png)
 
+
+## Conclusions
+- SPX and Health Sector Index showed increasing trend during pandemic
+- Linear regression model can predict index price but not individual stocks in the health sector
+- Unsupervised clustering showed covid vaccine companies like Pfizer, Moderna, Novavax stood out from the remaining stocks in health sector
+- Stocks of some covid vaccine companies were correlated with covid cases
+- Neural network prediction precision increase after incorporating covid data with closing price
 
